@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="text_search" id="text_search">
+    <button onclick="search()">Search</button>
+    <p>Nghĩa của từ là: <span id="out_text"></span></p>
+    <script>
+        function search(){
+            let text = document.getElementById("text_search").value;
+            alert(text);
+            var dictionary = [
+                ['apple','banana'],
+                ['quả táo','quả chuối']
+            ];
+            for (let i = 0; i<dictionary.length; i++){
+                if (dictionary[0][i] == text){
+                    var out = dictionary[1][i];
+                    break;
+                }else{
+                    var out = "Không biết";
+                }
+            }
+            document.getElementById("out_text").innerHTML = out;
+        }
+        
+    </script>
+</body>
+</html>
