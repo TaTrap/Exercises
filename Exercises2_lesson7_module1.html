@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{width: 100%;}
+        table{width: 70%; font-size: 25px;}
+        input{font-size: 25px;}
+        select{font-size: 25px; width: 70%;}
+        button{font-size: 25px; background-color: rgb(171, 134, 213); color: white;}
+        h2{color: blue;}
+        th{text-align: left;}
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th >Amount</th>
+            <th>From Currency</th>
+            <th>To Currency</th>
+        </tr>
+        <tr>
+            <td><input type="number" name="amount" id="amount" placeholder="Nhập số tiền"></td>
+            <td>
+                <select name="before" id="before">
+                    <option value="vietnam1">VietNam</option>
+                    <option value="usd1">USD</option>
+                    <option value="krw1">KRW</option>
+                </select>
+            </td>
+            <td>
+                <select name="after" id="after">
+                    <option value="vietnam2">VietNam</option>
+                    <option value="usd2">USD</option>
+                    <option value="krw2">KRW</option>
+                </select>
+            </td>
+            <td><button onclick="cv1()">Convert</button></td>
+        </tr>
+    </table>
+    <h2>Result: <span id="rS">...</span></h2>
+    <script>
+       function cv1(){
+        let bF = document.getElementById("before").value;
+        let aT = document.getElementById("after").value;
+        let aMount = parseFloat(document.getElementById("amount").value);
+        var index_cv;
+        if ( bF == "vietnam1" && aT == "vietnam2"){
+            index_cv = aMount * 1 + " VND";
+        } else if (bF == "vietnam1" && aT == "usd2") {
+            index_cv = aMount / 23000 +  " $";
+        } else if (bF == "vietnam1" && aT == "krw2"){
+            index_cv = aMount / 18 + " KRW";
+        }
+        if ( bF == "usd1" && aT == "vietnam2"){
+            index_cv = aMount * 23000 + " VND";
+        } else if (bF == "usd1" && aT == "usd2") {
+            index_cv = aMount * 1 + " $";
+        } else if (bF == "usd1" && aT == "krw2"){
+            index_cv = aMount * 1297 + " KRW";
+        }
+        if ( bF == "krw1" && aT == "vietnam2"){
+            index_cv = aMount * 18 + " VND";
+        } else if (bF == "krw1" && aT == "usd2") {
+            index_cv = aMount / 1297 + " $";
+        } else if (bF == "krw1" && aT == "krw2"){
+            index_cv = aMount * 1 + " KRW";
+        }
+        
+        
+        document.getElementById("rS").innerHTML = index_cv;
+       }
+            
+        
+    </script>
+</body>
+</html>
